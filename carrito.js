@@ -52,7 +52,7 @@ export const comprarProducto = (idProducto) => {
         }
 
         carrito = JSON.parse(sessionStorage.getItem("carrito"))
-        alert(` producto seleccionado${nombre}`)
+        alert(` producto seleccionado ${nombre}`)
         console.log(carrito)
 }
 
@@ -70,7 +70,7 @@ const dibujarCarrito = () => {
 
         body.innerHTML = `
             
-            //<th> <img id="fotoProductoCarrito" src="${imagen}" class="card-img-top"</th>
+            <th> <img id="fotoProductoCarrito" src="${imagen}" class="card-img-top"</th>
             <td>${nombre}</td>
             <td>${cantidad}</td>
             <td>${precio/cantidad}</td>
