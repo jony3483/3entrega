@@ -39,7 +39,7 @@ const generarCardsProductos = (productos) => {
             divProductos.appendChild(card)
 
             //validacion ++ id boton
-            const btnComprar = document.getElementById(`btn${id}`)
+            const btnComprar = document.getElementById(`comprar${id}`)
             btnComprar.addEventListener("click", () => comprarProducto(id))// cuando se hace click en la funcion hay que llamar a la funcion comprar producto para pasar el id de ese producto aqui donde se genera el evento porque es la id de productos
     });
 };
