@@ -143,7 +143,6 @@ const restarCantidad = (id) => {
     carrito[indexProductoCarrito].cantidad--
     carrito[indexProductoCarrito].precio = precio*carrito[indexProductoCarrito].cantidad
 
-    sessionStorage.setItem("carrito", JSON.stringify(carrito))
 
     if(carrito[indexProductoCarrito].cantidad === 0){
         carrito.splice(indexProductoCarrito, 1)
