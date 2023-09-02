@@ -125,7 +125,7 @@ const generarTotales = () => {
 }
 
 const aumentarCantidad = (id) => {
-    const indexProductoCarrito = carrito.findindex((producto) => producto.id === id)
+    const indexProductoCarrito = carrito.findIndex((producto) => producto.id === id)
     const precio = carrito[indexProductoCarrito].precio / carrito[indexProductoCarrito].cantidad
 
     carrito[indexProductoCarrito].cantidad++
@@ -137,7 +137,7 @@ const aumentarCantidad = (id) => {
 
 }
 const restarCantidad = (id) => {
-    const indexProductoCarrito = carrito.findindex((producto) => producto.id === id)
+    const indexProductoCarrito = carrito.findIndex((producto) => producto.id === id)
     const precio = carrito[indexProductoCarrito].precio / carrito[indexProductoCarrito].cantidad
 
     carrito[indexProductoCarrito].cantidad--
