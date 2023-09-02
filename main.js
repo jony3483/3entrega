@@ -1,79 +1,56 @@
-let div = document.getElementById("titulo"
-);
-console.log(div.innerHTML);
-console.log(div.innerText);
+// importa funcion del carrito este debe estar ene el incio porque aqui lo voy a utilizar ya que los productos estan en el incio
+import { comprarProducto } from "./carrito.js"
 
-let formulario = document.getElementById("formulario");
+// nodos de html
+const divProductos = document.getElementById("productos");
 
-formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
+// variable del storage para guardarlo en parse para retornar la clave producto y el export es porque hay que trasladar los productos 
+ export let productosDisponibles = JSON.parse(localStorage.getItem("productos"));
 
-    let inputs = e.target.children;
+//para cargar html conlas cards
+document.addEventListener("DOMContentLoaded", () => {
+    generarCardsProductos(productosDisponibles)
+})
 
-    if(!inputs[0].value.includes("@")){
-        inputs[0].value = "";
-        alert("debe ser un correo ")
-    }
-});
+//funcion para generar productos en carrito
+
+const generarCardsProductos = (productos) => {
+
+    //recorra los productos y generamos la cards
+    productos.forEach(producto => {
+
+        //propiedad destructora para elimnar los producto.nombre y dejar solo la propiedad del objeto
+        const { imagen, nombre, categoria, precio, id} = producto
+        //variable de la card
+        let card = document.createElement("div")
+            // codigo html de card bst
+            card.className = "producto"
+            card.innerHTML = `
+            <div class="card" style="width: 18rem;">
+                <img src="${producto.imagen}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${nombre}</h5>
+                    <p class="card-text">categoria: ${categoria}</p>
+                    <p class="card-text">precio: <b>$${precio}</b></p>
+                    <button id="comprar${id}" class="btn btn-primary">Comprar</button>
+                </div>
+            </div>`;
+            //carge los productos en la card
+            divProductos.appendChild(card)
+
+            //validacion ++ id boton
+            const btnComprar = document.getElementById(`comprar${id}`)
+            btnComprar.addEventListener("click", () => comprarProducto(id))// cuando se hace click en la funcion hay que llamar a la funcion comprar producto para pasar el id de ese producto aqui donde se genera el evento porque es la id de productos
+    });
+};
 
 
 
-class Producto {
-    constructor(nombre, disponible, talla, precio){
-        this.nombre = nombre;
-        this.disponible = disponible;
-        this.talla = talla;
-        this.precio = precio;
-        this.vendido = false;
-    }
-    vender() {
-        this.vendido = true;
-    }
-}
 
-let productos =[
-    { id: 1, nombre: "tomy", disponible: "XL, L", talla: "XL", precio: 3000},
-    { id: 2, nombre: "tomy", disponible: "XL, L", talla: "L", precio: 5000},
-    { id: 3, nombre: "polo", disponible: "XL", talla: "XL", precio: 7000},
-    { id: 4, nombre: "levis", disponible: "XL", talla: "XL", precio: 4000},
-    { id: 5, nombre: "levis", disponible: "M", talla: "M", precio: 8000},
-];
 
-JSON.parse(localStorage.getItem("productos")) || localStorage.setItem("productos", JSON.stringify(productos));
 
-let nombre = prompt("ingres marca camisa");
 
-const producto = productos.find((item) => item.nombre === nombre);
 
-if (producto) {
-    let mensaje = `
-    id: ${producto.id}
-    nombre: ${producto.nombre}
-    disponible: ${producto.disponible}
-    talla: ${producto.talla}
-    $${producto.precio}
-    `;
 
-    alert(mensaje);
-} else {
-    alert("camisa no disponible");
-}
 
-let precio = parseInt(prompt("camisas menores a 5000 pesos"));
-let filtrados = productos.filter ((item) => item.precio <= 5000);
-filtrados.forEach((producto) => {
-        if (filtrados){
-            let mensaje = `
-                id: ${producto.id}
-                nombre: ${producto.nombre}
-                disponible: ${producto.disponible}
-                talla: ${producto.talla}
-                $${producto.precio}
-            `;
-
-            alert(mensaje)
-        } else{
-            alert("no hay mas productos");
-        }   
-});
 
