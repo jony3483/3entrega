@@ -44,7 +44,7 @@ export const comprarProducto = (idProducto) => {
             carrito.push(nuevoProductoCarrito)
             sessionStorage.setItem("carrito", JSON.stringify(carrito))
         }else{
-            const indexProductoCarrito = carrito.findindex((producto) => producto.id === idProducto)
+            const indexProductoCarrito = carrito.findIndex((producto) => producto.id === idProducto)
 
             carrito[indexProductoCarrito].cantidad++
             carrito[indexProductoCarrito].precio = precio * carrito[indexProductoCarrito].cantidad
