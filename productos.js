@@ -5,7 +5,7 @@ export const productos = [
         id: 1,
         nombre: "polera pique", 
         precio: 50, 
-        imagen:"https://www.ferouch.cl/polera-pique-basica-ss-22-dk-capri/p?idsku=27864&gclid=EAIaIQobChMI0q_rtdCKgQMVj1xIAB2ajAGZEAQYAiABEgIaBPD_BwE", 
+        imagen:"https://www.leejeans.cl/polera-hombre-woobly-logo-white/p?idsku=654&gclid=EAIaIQobChMI5Jau6auMgQMVBGGRCh1nbAaMEAQYASABEgJ4q_D_BwE", 
         categoria:"polera",
     },
     {
